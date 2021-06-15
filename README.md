@@ -1,6 +1,6 @@
 # AI & ML for Coders
 
 ## Upto
-Page 38
+Page 51
 
-Let’s start with the first line
+The math for why normalized data is better for training neural networks is beyond the scope of this book
