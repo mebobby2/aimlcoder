@@ -1,6 +1,6 @@
 # AI & ML for Coders
 
 ## Upto
-Page 51
+Page 54
 
-The math for why normalized data is better for training neural networks is beyond the scope of this book
+Training for Longer—Discovering Overfitting
