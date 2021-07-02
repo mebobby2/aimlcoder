@@ -1,6 +1,6 @@
 # AI & ML for Coders
 
 ## Upto
-Page 54
+Page 57
 
-Training for Longer—Discovering Overfitting
+Chapter 3

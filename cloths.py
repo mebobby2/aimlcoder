@@ -1,8 +1,15 @@
 import tensorflow as tf
 import matplotlib.pyplot as plt
-from tensorflow.keras import Sequential
+from tensorflow.keras import Sequential, callbacks
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import Flatten
+
+class myCallback(tf.keras.callbacks.Callback):
+    def on_epoch_end(self, epoch, logs={}):
+        if(logs.get('accuracy') > 0.95):
+            print("\nReached 95% accuracy so cancelling training!")
+            self.model.stop_training = True
+
 
 data = tf.keras.datasets.fashion_mnist
 
@@ -21,7 +28,8 @@ model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-model.fit(training_images, training_labels, epochs=5)
+callbacks = myCallback()
+model.fit(training_images, training_labels, epochs=50, callbacks=[callbacks])
 
 model.evaluate(test_images, test_labels)
 
