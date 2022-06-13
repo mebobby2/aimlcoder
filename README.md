@@ -1,7 +1,6 @@
 # AI & ML for Coders
 
 ## To Run
-* conda activate tf
 * python3 script.py
 
 ## Install Tensorflow
@@ -31,6 +30,9 @@ Instructions: https://www.tensorflow.org/install/pip#macos
 * python3 -m pip install tensorflow-macos
   * This is installing tensorflow onto the system - not a virtual env through Conda
 
+## Install Other Dependencies
+* python3 -m pip install matplotlib
+
 ## Terminology
 * Hidden layers - layers that are between the inputs and the outputs aren't seen by a caller, so the term 'hidden' is used to describe them
 * More neurons could also lead to a network that is great at recognizing the training data, but not so good at recognizing data that it hasn't previously seen (this is known as overfitting)
@@ -54,6 +56,6 @@ Conda - manages binaries, has the ability to create virtual environments, does d
 Pip - manages wheel or python source code only, does not create virtual environments OOTB but can be done using virtualenv or venv, does not do dependency checks
 
 ## Upto
-Page 57
+Page 66
 
-Chapter 3
+Building a CNN to Distinguish Between Horses and Humans
