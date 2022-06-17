@@ -41,6 +41,35 @@ Instructions: https://www.tensorflow.org/install/pip#macos
 * Armed with this knowledge, the computer can then make another guess. That's the job of the optimizer. This is where the heavy calculus is used, but with TensorFlow, that can be hidden from you. You just pick the appropriate optimizer to use for differ‐ ent scenarios. In this case we picked one called sgd, which stands for stochastic gradi‐ ent descent—a complex mathematical function that, when given the values, the previous guess, and the results of calculating the errors (or loss) on that guess, can then generate another one. Over time, its job is to minimize the loss, and by so doing bring the guessed formula closer and closer to the correct answer.
 * What is a Dense Layer in Neural Network? Is a neural network layer that is connected deeply, which means each neuron in the dense layer receives input from all neurons of its previous layer. The dense layer is found to be the most commonly used layer in the models.
 
+## ML Models
+### Convolutional Neural Network (CNN)
+#### Convolutions
+Convolutions - A convolution is simply a filter of weights that are used to multiply a pixel with its neighbors to get a new value for the pixel.
+
+If we then define a filter in the same 3 × 3 grid, as shown below the original values, we can transform that pixel by calculating a new value for it. We do this by multiplying the current value of each pixel in the grid by the value in the same position in the filter grid, and summing up the total amount. This total will be the new value for the current pixel. We then repeat this for all pixels in the image.
+
+Repeating this process across every pixel in the image will give us a filtered image.
+
+Let's consider the impact of applying a filter on a more complicated image.
+
+Using a filter with negative values on the left, positive values on the right, and zeros in the middle will end up removing most of the information from the image except for vertical lines. Similarly, a small change to the filter can emphasize the horizontal lines.
+
+These examples also show that the amount of information in the image is reduced, so we can potentially learn a set of filters that reduce the image to features, and those features can be matched to labels as before. Previously, we learned parameters that were used in neurons to match inputs to outputs. Similarly, the best filters to match inputs to outputs can be learned over time.
+
+When combined with pooling, we can reduce the amount of information in the image while maintaining the features. We'll explore that next.
+
+#### Pooling
+Pooling is the process of eliminating pixels in your image while maintaining the semantics of the content within the image.
+
+Consider the box on the left to be the pixels in a monochrome image. We then group them into 2 × 2 arrays, so in this case the 16 pixels are grouped into four 2 × 2 arrays. These are called pools.
+
+We then select the maximum value in each of the groups, and reassemble those into a new image. Thus, the pixels on the left are reduced by 75% (from 16 to 4), with the maximum value from each pool making up the new image.
+
+Note how the filtered features have not just been maintained, but further enhanced. Also, the image size has changed from 512 × 512 to 256 × 256—a quarter of the original size.
+
+There are other approaches to pooling, such as min pooling, which takes the smallest pixel value from the pool, and average pooling, which takes the overall average value.
+
+
 ## Python
 ### Wheels
 https://realpython.com/python-wheels/#:~:text=and%20its%20dependencies.-,What%20Is%20a%20Python%20Wheel%3F,a%20type%20of%20built%20distribution.
