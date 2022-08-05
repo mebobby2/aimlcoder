@@ -6,3 +6,8 @@ horse-or-human.zip
 horse-or-human
 
 validation-horse-or-human.zip
+
+saved_model.pb
+keras_metadata.pb
+
+variables

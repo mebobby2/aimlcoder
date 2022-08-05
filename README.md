@@ -95,6 +95,6 @@ https://github.com/christianversloot/machine-learning-articles
 https://github.com/lmoroney/tfbook
 
 ## Upto
-Page 69
+Page 73
 
-CNN Architecture for Horses or Humans
+When they were uploaded, as you can see in
