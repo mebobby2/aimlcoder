@@ -69,6 +69,9 @@ Note how the filtered features have not just been maintained, but further enhanc
 
 There are other approaches to pooling, such as min pooling, which takes the smallest pixel value from the pool, and average pooling, which takes the overall average value.
 
+#### Training, Validation, and Testing
+You may be wondering why we’re talking about a validation dataset here, rather than a test dataset, and whether they’re the same thing. For simple models like the ones developed in the previous chapters, it’s often sufficient to split the dataset into two parts, one for train‐ ing and one for testing. But for more complex models like the one we’re building here, you’ll want to create separate validation and test sets. What’s the difference? Training data is the data that is used to teach the network how the data and labels fit together. Validation data is used to see how the network is doing with previously unseen data while you are training—i.e., it isn’t used for fitting data to labels, but to inspect how well the fitting is going. Test data is used after training to see how the network does with data it has never previously seen. Some datasets come with a three-way split, and in other cases you’ll want to separate the test set into two parts for validation and testing. Here, you’ll download some additional images for testing the model.
+
 
 ## Python
 ### Wheels
@@ -87,6 +90,9 @@ Pip - manages wheel or python source code only, does not create virtual environm
 
 ## Good Online Sources
 https://github.com/christianversloot/machine-learning-articles
+
+## Book Source Code
+https://github.com/lmoroney/tfbook
 
 ## Upto
 Page 69

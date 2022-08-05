@@ -12,7 +12,7 @@ test_images = test_images / 255.0
 
 # The activation and input_shape parameters are the same as before. As we're using Fashion MNIST in this example, the shape is still 28 × 28. Do note, however, that because Conv2D layers are designed for multicolor images, we're specifying the third dimension as 1, so our input shape is 28 × 28 × 1. Color images will typically have a 3 as the third parameter as they are stored as values of R, G, and B.
 
-# Here's how to use a pooling layer in the neural network. You'll typically do this imme‐ diately after the convolutional layer. We split the image into 2 × 2 pools and picked the maximum value in each. This operation could have been parameterized to define the pool size. Those are the parameters that you can see here—the (2, 2) indicates that our pools are 2 × 2.
+# Here's how to use a pooling layer in the neural network. You'll typically do this immediately after the convolutional layer. We split the image into 2 × 2 pools and picked the maximum value in each. This operation could have been parameterized to define the pool size. Those are the parameters that you can see here—the (2, 2) indicates that our pools are 2 × 2.
 
 
 model = tf.keras.models.Sequential([
