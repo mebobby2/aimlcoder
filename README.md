@@ -95,6 +95,6 @@ https://github.com/christianversloot/machine-learning-articles
 https://github.com/lmoroney/tfbook
 
 ## Upto
-Page 73
+Page 79
 
-When they were uploaded, as you can see in
+Transfer Learning

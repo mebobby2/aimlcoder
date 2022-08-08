@@ -7,7 +7,19 @@ from keras.optimizers import RMSprop
 # Assign labels to the data
 
 training_dir = 'horse-or-human/training' # When running from the parent folder (i.e. humanhorses)
-train_datagen = ImageDataGenerator(rescale=1/255)
+train_datagen = ImageDataGenerator(
+  rescale=1./255,
+  rotation_range=40,
+  width_shift_range=0.2,
+  height_shift_range=0.2,
+  shear_range=0.2,
+  zoom_range=0.2,
+  horizontal_flip=True,
+  fill_mode='nearest'
+)
+# Why rescale by 1./255?
+# https://github.com/Arsey/keras-transfer-learning-for-oxford102/issues/1
+# ur original images consist in RGB coefficients in the 0-255, but such values would be too high for our model to process (given a typical learning rate), so we target values between 0 and 1 instead by scaling with a 1/255
 train_generator = train_datagen.flow_from_directory(
     training_dir,
     target_size=(300, 300),
