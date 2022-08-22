@@ -95,6 +95,9 @@ https://github.com/christianversloot/machine-learning-articles
 https://github.com/lmoroney/tfbook
 
 ## Upto
-Page 79
+Page 82
 
-Transfer Learning
+The results here are much better than with our previous mode
+
+Before that:
+Figure out why this model predicts all my test images (including some images I took from the validation set) as human!
