@@ -79,7 +79,7 @@ history = model.fit(
   validation_data=validation_generator
 )
 
-model.save('..')
+model.save('humanhorses')
 
 
 
