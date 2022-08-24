@@ -3,7 +3,7 @@ import os
 from  tensorflow import keras
 from tensorflow.keras.preprocessing import image
 
-model = keras.models.load_model('catordog')
+model = keras.models.load_model('catordogtransfer')
 
 for filename in os.listdir('testimages'):
   f = os.path.join('testimages', filename)
