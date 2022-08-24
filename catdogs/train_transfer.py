@@ -2,6 +2,7 @@ from pickletools import optimize
 from tensorflow.keras import layers
 from tensorflow.keras import Model
 from tensorflow.keras.applications.inception_v3 import InceptionV3
+import urllib.request
 from tkinter import Image
 import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
@@ -31,42 +32,41 @@ validation_generator = validation_datagen.flow_from_directory(VALIDATION_DIR,
                                                               class_mode='binary',
                                                               target_size=(150, 150))
 
-model = tf.keras.models.Sequential([
-    # 16 convolutions/filters, each a 3x3
-    # activation is relu - function that just returns a value if it's greater than 0
-    # 300x300 is the size of images in pixels and 3 is to represent color channels
-    tf.keras.layers.Conv2D(16, (3, 3), activation='relu',
-                           input_shape=(150, 150, 3)),
+#weights_url = "https://storage.googleapis.com/mledu-datasets/inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5"
+weights_file = "inception_v3.h5"
+#urllib.request.urlretrieve(weights_url, weights_file)
 
-    # Split image into 2 x 2 pools and pick max value in each (this eliminates pixels while also enhances the semantics)
-    tf.keras.layers.MaxPooling2D(2, 2),
+pre_trained_model = InceptionV3(input_shape=(150, 150, 3),
+                                include_top=False,
+                                weights=None)
 
-    # Stack several convolutional layers.
-    # We do this because our image source is quite large, and we want, over time, to have many smaller images, each with features highlighted
-    tf.keras.layers.Conv2D(32, (3, 3), activation='relu'),
-    tf.keras.layers.MaxPooling2D(2, 2),
-    tf.keras.layers.Conv2D(64, (3, 3), activation='relu'),
-    tf.keras.layers.MaxPooling2D(2, 2),
-    tf.keras.layers.Conv2D(64, (3, 3), activation='relu'),
-    tf.keras.layers.MaxPooling2D(2, 2),
-    tf.keras.layers.Conv2D(64, (3, 3), activation='relu'),
-    tf.keras.layers.MaxPooling2D(2, 2),
+pre_trained_model.summary()
 
-    # Flatten the images
-    tf.keras.layers.Flatten(),
+pre_trained_model.load_weights(weights_file)
 
-    # A layer of 512 neurons
-    tf.keras.layers.Dense(512, activation='relu'),
+for layer in pre_trained_model.layers:
+    layer.trainable = False
 
-    # A layer of 1 neurons (this is binary classifier)
-    # Sigmoid function drives one set of values toward 0 and the other toward 1, which is perfect for binary classification.
-    tf.keras.layers.Dense(1, activation='sigmoid')
-])
+# pre_trained_model.summary()
 
-model.compile(loss='binary_crossentropy',
-  optimizer=RMSprop(learning_rate=0.001),
-  metrics=['accuracy'])
+last_layer = pre_trained_model.get_layer('mixed1')
+print('last layer output shape: ', last_layer.output_shape)
+last_output = last_layer.output
 
+# Flatten the output layer to 1 dimension
+x = layers.Flatten()(last_output)
+# Add a fully connected layer with 1,024 hidden units and ReLU activation
+x = layers.Dense(512, activation='relu')(x)
+# Add a dropout rate of 0.2
+#x = layers.Dropout(0.2)(x)
+# Add a final sigmoid layer for classification
+x = layers.Dense(1, activation='sigmoid')(x)
+
+model = Model(pre_trained_model.input, x)
+
+model.compile(optimizer=RMSprop(learning_rate=0.001),
+              loss='binary_crossentropy',
+              metrics=['accuracy'])
 
 history = model.fit(
             train_generator,
@@ -74,4 +74,4 @@ history = model.fit(
             epochs=20,
             verbose=1)
 
-model.save('catordog')
+model.save('catordogtransfer')
