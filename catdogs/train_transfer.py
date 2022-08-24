@@ -2,11 +2,8 @@ from pickletools import optimize
 from tensorflow.keras import layers
 from tensorflow.keras import Model
 from tensorflow.keras.applications.inception_v3 import InceptionV3
-import urllib.request
-from tkinter import Image
 import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
-from keras.optimizers import RMSprop
 
 TRAINING_DIR = "/Users/BobbyLei/Desktop/learn/aimlcoder/catdogs/cat-or-dog/training/"
 # Experiment with your own parameters here to really try to drive it to 99.9% accuracy or better

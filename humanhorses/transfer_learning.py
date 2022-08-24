@@ -1,20 +1,11 @@
-import urllib.request
 from pickletools import optimize
 from tensorflow.keras.applications.inception_v3 import InceptionV3
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.optimizers import RMSprop
 from tensorflow.keras import layers
 from tensorflow.keras import Model
 
-#weights_url = "https://storage.googleapis.com/mledu-datasets/inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5"
-
-weights_file = "inception_v3.h5"
-#urllib.request.urlretrieve(weights_url, weights_file)
-
 pre_trained_model = InceptionV3(input_shape=(
-    150, 150, 3), include_top=False, weights=None)
-
-pre_trained_model.load_weights(weights_file)
+    150, 150, 3), include_top=False, weights='imagenet')
 
 # Inspect the model's architecture
 # pre_trained_model.summary()
@@ -36,7 +27,7 @@ x = layers.Dense(1024, activation='relu')(x)
 x = layers.Dense(1, activation='sigmoid')(x)
 
 model = Model(pre_trained_model.input, x)
-model.compile(optimizer=RMSprop(learning_rate=0.0001),
+model.compile(optimizer='adam',
               loss='binary_crossentropy', metrics=['accuracy'])
 
 # When running from the parent folder (i.e. humanhorses)
@@ -73,4 +64,4 @@ history = model.fit(
     verbose=1
 )
 
-model.save('transferred_model')
+model.save('humanhorsestransfer')

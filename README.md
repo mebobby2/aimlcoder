@@ -95,13 +95,6 @@ https://github.com/christianversloot/machine-learning-articles
 https://github.com/lmoroney/tfbook
 
 ## Upto
-Page 82
+Page 83
 
-The results here are much better than with our previous mode
-
-Before that:
-Figure out why this model predicts all my test images (including some images I took from the validation set) as human!
-
-Try these suggestions on improving the accurracy of the dog or cat model. Forget about the human or horse model as I only have a small set of data to play with anyways
-https://stackoverflow.com/questions/41488279/neural-network-always-predicts-the-same-class
-https://theorangeduck.com/page/neural-network-not-working#preprocess
+Multiclass Classification
