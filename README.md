@@ -9,6 +9,11 @@
 * bash Miniconda3-latest-MacOSX-x86_64.sh
 * You may need to restart your terminal
 
+### Mac M1 Architectures
+Follow instructions in InstallTensorFlow.md
+
+Then use Conda environment 'my_tf_env'
+
 ### Create a conda environment
 * conda create --name tf python=3.9
 * conda activate tf

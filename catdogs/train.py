@@ -4,7 +4,7 @@ from tensorflow.keras import Model
 from tensorflow.keras.applications.inception_v3 import InceptionV3
 from tkinter import Image
 import tensorflow as tf
-from keras.preprocessing.image import ImageDataGenerator
+from keras.src.legacy.preprocessing.image import ImageDataGenerator
 from keras.optimizers import RMSprop
 
 TRAINING_DIR = "/Users/BobbyLei/Desktop/learn/aimlcoder/catdogs/cat-or-dog/training/"
