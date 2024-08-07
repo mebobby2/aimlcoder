@@ -41,6 +41,7 @@ Install other useful libraries
 conda activate my_tf_env
 
 pip install pillow
+pip install scipy
 ```
 
 Issues with tensorflow-metal (https://github.com/tensorflow/tensorflow/issues/64507)

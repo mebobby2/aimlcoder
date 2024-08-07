@@ -3,7 +3,7 @@ from tensorflow.keras import layers
 from tensorflow.keras import Model
 from tensorflow.keras.applications.inception_v3 import InceptionV3
 import tensorflow as tf
-from keras.preprocessing.image import ImageDataGenerator
+from keras.src.legacy.preprocessing.image import ImageDataGenerator
 
 TRAINING_DIR = "/Users/BobbyLei/Desktop/learn/aimlcoder/catdogs/cat-or-dog/training/"
 # Experiment with your own parameters here to really try to drive it to 99.9% accuracy or better
@@ -39,7 +39,7 @@ for layer in pre_trained_model.layers:
     layer.trainable = False
 
 last_layer = pre_trained_model.get_layer('mixed9')
-print('last layer output shape: ', last_layer.output_shape)
+print('last layer output shape: ', last_layer.output.shape)
 last_output = last_layer.output
 
 # Flatten the output layer to 1 dimension
