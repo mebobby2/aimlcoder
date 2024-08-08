@@ -74,4 +74,4 @@ history = model.fit(
             epochs=20,
             verbose=1)
 
-model.save('catordog')
+model.save('catordog.keras')

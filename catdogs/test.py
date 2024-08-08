@@ -3,10 +3,10 @@ import os
 from  tensorflow import keras
 from tensorflow.keras.preprocessing import image
 
-model = keras.models.load_model('catordog')
+model = keras.models.load_model('catordog.keras')
 
-for filename in os.listdir('testimages'):
-  f = os.path.join('testimages', filename)
+for filename in os.listdir('catdogs/testimages'):
+  f = os.path.join('catdogs/testimages', filename)
 
   # predicting images
   img = image.load_img(f, target_size=(150, 150))
